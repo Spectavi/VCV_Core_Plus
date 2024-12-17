@@ -1,0 +1,27 @@
+{
+  "slug": "CorePlus",
+  "name": "CorePlus",
+  "version": "2.0.1",
+  "license": "GPL-3.0-only",
+  "brand": "Spectavi Labs",
+  "author": "Aaron McClintock",
+  "authorEmail": "aaron@spectavilabs.com",
+  "authorUrl": "",
+  "pluginUrl": "www.spectavilabs.com/CorePlus/",
+  "manualUrl": "www.spectavilabs.com/CorePlus/manual.pdf",
+  "sourceUrl": "https://github.com/Spectavi/VCV_Core_Plus",
+  "donateUrl": "https://www.paypal.com/ncp/payment/37DMEM7K9AV76",
+  "changelogUrl": "",
+  "modules": [
+    {
+      "slug": "MIDICCCV64",
+      "name": "MIDI CC to CV64",
+      "description": "Converts MIDI CC from an external device to CV64",
+      "manualUrl": "",
+      "tags": [
+        "External",
+        "MIDI"
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Plugin Files
 
-Available for Windows and Linux in the plugin-builds/ folder.
+Available for Windows and Linux in the plugin-build/ folder.
 
 # Building Core Plus Plugin 
 

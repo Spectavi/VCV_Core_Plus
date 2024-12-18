@@ -1,0 +1,682 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BackendCodeEditorMiscSettings">
+    <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
+    <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
+    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
+    <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="6" type="long" />
+  </component>
+  <component name="CMakeProjectFlavorService">
+    <option name="flavorId" value="CMakePlainProjectFlavor" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated>
+      <config projectName="VCV_Core_Plus" targetName="Makefile" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7f821c9f-745e-496b-b343-cb52f2d99a78" name="Changes" comment="Initial commit.">
+      <change afterPath="$PROJECT_DIR$/CorePlus/plugin.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CorePlus/res/MIDICCCV64-dark.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CorePlus/res/MIDICCCV64.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CorePlus/src/MIDICCCV64.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CorePlus/src/plugin.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.astylerc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/CONTRIBUTING.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitmodules" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Component.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Distribution.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entitlements.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Info.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE-GPLv3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE-dist.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rack.rc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/adapters/standalone.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/arch.mk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cacert.pem" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compile.mk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dep.mk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dep/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dep/filesystem" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dep/fuzzysearchdatabase" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dep/glfw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dep/nanosvg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dep/nanovg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dep/osdialog" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dep/oui-blendish" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dep/pffft" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dep/rtaudio" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dep/rtmidi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dep/simde" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dep/speexdsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dep/tinyexpr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Doxyfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/helper.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon.icns" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/Quantity.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/app/AudioDisplay.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/app/Browser.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/app/CableWidget.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/app/CircularShadow.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/app/Knob.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/app/LedDisplay.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/app/LightWidget.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/app/MenuBar.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/app/MidiDisplay.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/app/ModuleLightWidget.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/app/ModuleWidget.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/app/MultiLightWidget.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/app/ParamWidget.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/app/PortWidget.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/app/RackScrollWidget.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/app/RackWidget.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/app/RailWidget.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/app/Scene.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/app/SliderKnob.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/app/SvgButton.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/app/SvgKnob.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/app/SvgPanel.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/app/SvgPort.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/app/SvgScrew.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/app/SvgSlider.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/app/SvgSwitch.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/app/Switch.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/app/TipWindow.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/app/common.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/arch.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/asset.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/audio.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/color.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/common.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/componentlibrary.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/context.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/dsp/approx.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/dsp/common.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/dsp/convert.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/dsp/digital.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/dsp/fft.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/dsp/filter.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/dsp/fir.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/dsp/midi.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/dsp/minblep.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/dsp/ode.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/dsp/resampler.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/dsp/ringbuffer.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/dsp/vumeter.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/dsp/window.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/engine/Cable.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/engine/Engine.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/engine/Light.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/engine/LightInfo.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/engine/Module.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/engine/Param.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/engine/ParamHandle.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/engine/ParamQuantity.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/engine/Port.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/engine/PortInfo.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/gamepad.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/helpers.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/history.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/keyboard.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/library.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/logger.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/math.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/midi.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/midiloopback.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/mutex.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/network.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/patch.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/plugin.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/plugin/Model.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/plugin/Plugin.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/plugin/callbacks.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/rack.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/rack0.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/random.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/rtaudio.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/rtmidi.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/settings.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/simd/Vector.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/simd/common.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/simd/functions.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/simd/sse_mathfun.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/simd/sse_mathfun_extension.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/string.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/system.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/tag.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/ui/Button.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/ui/ChoiceButton.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/ui/Label.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/ui/List.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/ui/Menu.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/ui/MenuEntry.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/ui/MenuItem.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/ui/MenuLabel.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/ui/MenuOverlay.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/ui/MenuSeparator.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/ui/OptionButton.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/ui/ProgressBar.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/ui/RadioButton.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/ui/ScrollWidget.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/ui/Scrollbar.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/ui/SequentialLayout.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/ui/Slider.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/ui/TextField.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/ui/Tooltip.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/ui/TooltipOverlay.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/ui/common.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/weakptr.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/widget/FramebufferWidget.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/widget/OpaqueWidget.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/widget/OpenGlWidget.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/widget/SvgWidget.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/widget/TransformWidget.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/widget/TransparentWidget.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/widget/Widget.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/widget/ZoomWidget.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/widget/event.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/window/Svg.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/window/Window.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/installer.nsi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugin.mk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/CV-CC/0_CC 0-15.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/CV-CC/1_CC 16-31.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/CV-CC/2_CC 32-47.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/CV-CC/3_CC 48-63.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/CV-CC/4_CC 64-79.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/CV-CC/5_CC 80-95.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/CV-CC/6_CC 96-111.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/CV-CC/7_CC 112-127.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/CV-Gate/0_C-1-D#0.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/CV-Gate/1_C0-D#1.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/CV-Gate/2_C1-D#2.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/CV-Gate/3_C2-D#3.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/CV-Gate/4_C3-D#4.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/CV-Gate/5_C4-D#5.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/CV-Gate/6_C5-D#6.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/CV-Gate/7_C6-D#7.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/CV-Gate/8_C7-D#8.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/CV-Gate/9_C8-D#9.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/MIDICCToCVInterface/0_CC 0-15.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/MIDICCToCVInterface/1_CC 16-31.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/MIDICCToCVInterface/2_CC 32-47.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/MIDICCToCVInterface/3_CC 48-63.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/MIDICCToCVInterface/4_CC 64-79.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/MIDICCToCVInterface/5_CC 80-95.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/MIDICCToCVInterface/6_CC 96-111.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/MIDICCToCVInterface/7_CC 112-127.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/MIDITriggerToCVInterface/0_C-1-D#0.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/MIDITriggerToCVInterface/1_C0-D#1.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/MIDITriggerToCVInterface/2_C1-D#2.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/MIDITriggerToCVInterface/3_C2-D#3.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/MIDITriggerToCVInterface/4_C3-D#4.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/MIDITriggerToCVInterface/5_C4-D#5.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/MIDITriggerToCVInterface/6_C5-D#6.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/MIDITriggerToCVInterface/7_C6-D#7.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/MIDITriggerToCVInterface/8_C7-D#8.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presets/MIDITriggerToCVInterface/9_C8-D#9.vcvm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/ADAT.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/BefacoBigKnob.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/BefacoBigKnob_bg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/BefacoPush_0.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/BefacoPush_1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/BefacoSlidePot.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/BefacoSlidePotHandle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/BefacoSwitch.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/BefacoSwitch_0.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/BefacoSwitch_1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/BefacoSwitch_2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/BefacoTinyKnobWhite_bg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/BefacoTinyPointBlack.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/CKD6_0.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/CKD6_1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/CKSSThreeHorizontal_0.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/CKSSThreeHorizontal_1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/CKSSThreeHorizontal_2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/CKSSThree_0.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/CKSSThree_1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/CKSSThree_2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/CKSS_0.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/CKSS_1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/CL1362.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Davies1900hBlack.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Davies1900hBlack_bg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Davies1900hLargeBlack.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Davies1900hLargeBlack_bg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Davies1900hLargeRed.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Davies1900hLargeRed_bg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Davies1900hLargeWhite.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Davies1900hLargeWhite_bg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Davies1900hRed.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Davies1900hRed_bg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Davies1900hWhite.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Davies1900hWhite_bg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/LargeLight.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/MIDI_DIN.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/MediumLight.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/NKK_0.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/NKK_1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/NKK_2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/PB61303.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/PJ301M-dark.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/PJ301M.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/PJ3410.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Plug.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/PlugPort.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rail-hcdark.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rail-light.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rail.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan1PBlue.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan1PBlue_fg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan1PGreen.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan1PGreen_fg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan1PRed.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan1PRed_fg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan1PSBlue.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan1PSBlue_fg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan1PSGreen.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan1PSGreen_fg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan1PSRed.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan1PSRed_fg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan1PSWhite.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan1PSWhite_fg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan1PS_bg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan1PWhite.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan1PWhite_fg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan1P_bg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan2PBlue.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan2PBlue_fg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan2PGreen.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan2PGreen_fg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan2PRed.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan2PRed_fg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan2PSBlue.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan2PSBlue_fg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan2PSGreen.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan2PSGreen_fg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan2PSRed.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan2PSRed_fg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan2PSWhite.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan2PSWhite_fg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan2PS_bg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan2PWhite.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan2PWhite_fg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan2P_bg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan2SGray.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan2SGray_fg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan2S_bg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan3PBlue.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan3PBlue_fg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan3PGreen.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan3PGreen_fg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan3PRed.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan3PRed_fg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan3PSBlue.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan3PSBlue_fg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan3PSGreen.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan3PSGreen_fg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan3PSRed.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan3PSRed_fg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan3PSWhite.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan3PSWhite_fg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan3PS_bg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan3PWhite.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan3PWhite_fg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan3P_bg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan5PSGray.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan5PSGray_fg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan5PS_bg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan6PSWhite.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan6PSWhite_fg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Rogan6PS_bg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/RoundBigBlackKnob.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/RoundBigBlackKnob_bg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/RoundBlackKnob.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/RoundBlackKnob_bg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/RoundHugeBlackKnob.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/RoundHugeBlackKnob_bg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/RoundLargeBlackKnob.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/RoundLargeBlackKnob_bg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/RoundSmallBlackKnob.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/RoundSmallBlackKnob_bg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/ScrewBlack.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/ScrewSilver.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/SmallLight.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/SynthTechAlco.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/SynthTechAlco_bg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/TL1105_0.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/TL1105_1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/TinyLight.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Trimpot.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/Trimpot_bg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/USB_B.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/VCVBezel.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/VCVButton_0.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/VCVButton_1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/VCVSlider.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/VCVSliderHandle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ComponentLibrary/VCVSliderLight.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Core/Audio16-dark.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Core/Audio16.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Core/Audio2-dark.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Core/Audio2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Core/Audio8-dark.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Core/Audio8.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Core/CV_MIDI-dark.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Core/CV_MIDI.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Core/CV_MIDICC-dark.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Core/CV_MIDICC.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Core/Gate_MIDI-dark.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Core/Gate_MIDI.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Core/MIDICC_CV-dark.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Core/MIDICC_CV.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Core/MIDIMap-dark.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Core/MIDIMap.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Core/MIDI_CV-dark.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Core/MIDI_CV.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Core/MIDI_Gate-dark.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Core/MIDI_Gate.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Core/Notes-dark.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Core/Notes.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/fonts/DSEG-LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/fonts/DSEG7ClassicMini-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/fonts/DSEG7ClassicMini-BoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/fonts/DSEG7ClassicMini-Italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/fonts/DSEG7ClassicMini-Light.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/fonts/DSEG7ClassicMini-LightItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/fonts/DSEG7ClassicMini-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/fonts/DejaVuSans-LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/fonts/DejaVuSans.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/fonts/Nunito-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/fonts/Nunito-LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/fonts/ShareTechMono-Regular-LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/fonts/ShareTechMono-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Quantity.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/AudioDisplay.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Browser.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/CableWidget.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/CircularShadow.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Knob.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/LedDisplay.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/LightWidget.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/MenuBar.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/MidiDisplay.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ModuleLightWidget.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ModuleWidget.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/MultiLightWidget.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ParamWidget.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/PortWidget.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/RackScrollWidget.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/RackWidget.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/RailWidget.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Scene.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/SliderKnob.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/SvgButton.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/SvgKnob.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/SvgPanel.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/SvgPort.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/SvgScrew.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/SvgSlider.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/SvgSwitch.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Switch.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/TipWindow.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/asset.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/asset.mm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/audio.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/color.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/Audio.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/Blank.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/CV_MIDI.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/CV_MIDICC.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/Gate_MIDI.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/MIDICC_CV.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/MIDIMap.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/MIDI_CV.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/MIDI_Gate.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/Notes.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/plugin.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/plugin.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/CorePlus/src/plugin.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dep.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dsp/minblep.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/Cable.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/Engine.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/LightInfo.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/Module.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/ParamQuantity.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/PortInfo.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gamepad.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/history.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/keyboard.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logger.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/midi.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/midiloopback.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/network.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/patch.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plugin.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plugin/Model.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plugin/Plugin.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/random.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rtaudio.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rtaudio.mm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rtmidi.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/settings.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/string.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tag.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Button.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/ChoiceButton.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Label.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/List.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Menu.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/MenuEntry.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/MenuItem.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/MenuLabel.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/MenuOverlay.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/MenuSeparator.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/OptionButton.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/ProgressBar.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/RadioButton.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/ScrollWidget.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Scrollbar.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/SequentialLayout.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Slider.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/TextField.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Tooltip.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/common.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widget/FramebufferWidget.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widget/OpenGlWidget.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widget/SvgWidget.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widget/Widget.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widget/ZoomWidget.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widget/event.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/window/Svg.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/window/Window.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template.vcv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/valgrind.supp" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dockerfile" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Spectavi&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Spectavi/VCV_Core_Plus.git&quot;,
+    &quot;accountId&quot;: &quot;089d295d-f02e-4286-932b-d275ec5c312b&quot;
+  }
+}</component>
+  <component name="MakefileLocalSettings">
+    <option name="availableProjects">
+      <map>
+        <entry>
+          <key>
+            <ExternalProjectPojo>
+              <option name="name" value="VCV_Core_Plus" />
+              <option name="path" value="$PROJECT_DIR$" />
+            </ExternalProjectPojo>
+          </key>
+          <value>
+            <list>
+              <ExternalProjectPojo>
+                <option name="name" value="VCV_Core_Plus" />
+                <option name="path" value="$PROJECT_DIR$" />
+              </ExternalProjectPojo>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="projectSyncType">
+      <map>
+        <entry key="$PROJECT_DIR$" value="RE_IMPORT" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2024" />
+    <option name="minorVersion" value="3.1" />
+    <option name="productBranch" value="Classic" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2qGgW76yNJtgyDv70guieVMYdX5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;v2&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/aem/CLionProjects/rack-plugin-toolchain/Rack-SDK-lin-x64/MIDICCToCV64&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="Makefile" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VCV_Core_Plus" TARGET_NAME="Makefile" CONFIG_NAME="Makefile" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7f821c9f-745e-496b-b343-cb52f2d99a78" name="Changes" comment="" />
+      <created>1734294355027</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1734294355027</updated>
+      <workItem from="1734294356106" duration="464000" />
+      <workItem from="1734296081244" duration="35000" />
+      <workItem from="1734472141228" duration="2114000" />
+      <workItem from="1734474300322" duration="3812000" />
+    </task>
+    <task id="LOCAL-00001" summary="Initial commit.">
+      <option name="closed" value="true" />
+      <created>1734472256175</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1734472256175</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit." />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial commit." />
+  </component>
+</project>

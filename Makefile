@@ -1,317 +1,384 @@
-RACK_DIR ?= .
-EDITION := Free
-VERSION_MAJOR := 2
-VERSION := $(shell jq -r .version Core.json)
+# Installation path for executables
+LOCAL_DIR := $(PWD)/local
+# Local programs should have higher path priority than system-installed programs
+export PATH := $(LOCAL_DIR)/bin:$(PATH)
 
-FLAGS += -Iinclude -Idep/include
-
-include arch.mk
-
-# Sources and build flags
-
-SOURCES += dep/nanovg/src/nanovg.c
-SOURCES += dep/osdialog/osdialog.c
-SOURCES += dep/oui-blendish/blendish.c
-SOURCES += dep/pffft/pffft.c dep/pffft/fftpack.c
-SOURCES += dep/tinyexpr/tinyexpr.c
-SOURCES += $(wildcard src/*.c src/*/*.c)
-SOURCES += $(wildcard src/*.cpp src/*/*.cpp)
-
-build/src/common.cpp.o: FLAGS += -D_APP_VERSION=$(VERSION)
-build/dep/tinyexpr/tinyexpr.c.o: FLAGS += -DTE_POW_FROM_RIGHT -DTE_NAT_LOG
-
-FLAGS += -fPIC
-LDFLAGS += -shared
-
-ifdef ARCH_LIN
-	SED := sed -i
-	TARGET := libRack.so
-
-	SOURCES += dep/osdialog/osdialog_zenity.c
-
-	# This prevents static variables in the DSO (dynamic shared object) from being preserved after dlclose().
-	# I don't really understand the side effects (see GCC manual), but so far tests are positive.
-	FLAGS += -fno-gnu-unique
-
-	LDFLAGS += -Wl,--whole-archive
-	LDFLAGS += -static-libstdc++ -static-libgcc
-	LDFLAGS += dep/lib/libGLEW.a dep/lib/libglfw3.a dep/lib/libjansson.a dep/lib/libcurl.a dep/lib/libssl.a dep/lib/libcrypto.a dep/lib/libarchive.a dep/lib/libzstd.a dep/lib/libspeexdsp.a dep/lib/libsamplerate.a dep/lib/librtmidi.a dep/lib/librtaudio.a
-	LDFLAGS += -Wl,--no-whole-archive
-	LDFLAGS += -lpthread -lGL -ldl -lX11 -lasound -ljack -lpulse -lpulse-simple
-endif
-
-ifdef ARCH_MAC
-	SED := sed -i ''
-	TARGET := libRack.dylib
-
-	SOURCES += $(wildcard src/*.m src/*/*.m)
-	SOURCES += $(wildcard src/*.mm src/*/*.mm)
-	SOURCES += dep/osdialog/osdialog_mac.m
-	LDFLAGS += -lpthread -ldl
-	LDFLAGS += -framework SystemConfiguration -framework Cocoa -framework OpenGL -framework IOKit -framework CoreVideo -framework CoreAudio -framework CoreMIDI -framework AVFoundation
-	LDFLAGS += -Wl,-all_load
-	LDFLAGS += dep/lib/libGLEW.a dep/lib/libglfw3.a dep/lib/libjansson.a dep/lib/libcurl.a dep/lib/libssl.a dep/lib/libcrypto.a -Wl,-load_hidden,dep/lib/libarchive.a -Wl,-load_hidden,dep/lib/libzstd.a dep/lib/libspeexdsp.a dep/lib/libsamplerate.a -Wl,-load_hidden,dep/lib/librtmidi.a -Wl,-load_hidden,dep/lib/librtaudio.a
-endif
-
-ifdef ARCH_WIN
-	SED := sed -i
-	TARGET := libRack.dll
-
-	SOURCES += dep/osdialog/osdialog_win.c
-	LDFLAGS += -municode
-	LDFLAGS += -Wl,--export-all-symbols
-	LDFLAGS += -Wl,--out-implib,$(TARGET).a
-	LDFLAGS += -Wl,-Bstatic -Wl,--whole-archive
-	LDFLAGS += dep/lib/libglew32.a dep/lib/libglfw3.a dep/lib/libjansson.a dep/lib/libspeexdsp.a dep/lib/libsamplerate.a dep/lib/libarchive_static.a dep/lib/libzstd.a dep/lib/libcurl.a dep/lib/libssl.a dep/lib/libcrypto.a dep/lib/librtaudio.a dep/lib/librtmidi.a
-	LDFLAGS += -Wl,-Bdynamic -Wl,--no-whole-archive
-	LDFLAGS += -lpthread -lopengl32 -lgdi32 -lws2_32 -lcomdlg32 -lole32 -ldsound -lwinmm -lksuser -lshlwapi -lmfplat -lmfuuid -lwmcodecdspuuid -ldbghelp -lcrypt32 -lbcrypt
-endif
-
-# Some libraries aren't needed by plugins and might conflict with DAWs that load libRack, so make their symbols local to libRack instead of global (default).
-# --exclude-libs is unavailable on Apple ld
-ifndef ARCH_MAC
-	LDFLAGS += -Wl,--exclude-libs,libzstd.a
-	LDFLAGS += -Wl,--exclude-libs,libarchive.a
-	LDFLAGS += -Wl,--exclude-libs,librtmidi.a
-	LDFLAGS += -Wl,--exclude-libs,librtaudio.a
-endif
-
-include compile.mk
-
-# Standalone adapter
-
-STANDALONE_SOURCES += adapters/standalone.cpp
-
-ifdef ARCH_LIN
-	STANDALONE_TARGET := Rack
-	STANDALONE_LDFLAGS += -static-libstdc++ -static-libgcc
-	STANDALONE_LDFLAGS += -Wl,-rpath=.
-endif
-ifdef ARCH_MAC
-	STANDALONE_TARGET := Rack
-	STANDALONE_LDFLAGS += -stdlib=libc++
-endif
-ifdef ARCH_WIN
-	STANDALONE_TARGET := Rack.exe
-	STANDALONE_LDFLAGS += -mwindows
-	# 1MiB stack size to match MSVC
-	STANDALONE_LDFLAGS += -Wl,--stack,0x100000
-	STANDALONE_OBJECTS += build/Rack.res
-endif
-
-STANDALONE_OBJECTS += $(TARGET)
-
-$(STANDALONE_TARGET): $(STANDALONE_SOURCES) $(STANDALONE_OBJECTS)
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(STANDALONE_LDFLAGS)
-
-# Convenience targets
-
-all: $(TARGET) $(STANDALONE_TARGET)
-
-dep:
-	$(MAKE) -C dep
-
-cleandep:
-	$(MAKE) -C dep clean
-
-run: $(STANDALONE_TARGET)
-	./$< -d
-
-runr: $(STANDALONE_TARGET)
-	./$<
-
-debug: $(STANDALONE_TARGET)
-ifdef ARCH_MAC
-	lldb -- ./$< -d
-endif
-ifdef ARCH_WIN
-	gdb --args ./$< -d
-endif
-ifdef ARCH_LIN
-	gdb --args ./$< -d
-endif
-
-perf: $(STANDALONE_TARGET)
-	# Requires perf
-	perf record --call-graph dwarf -o perf.data ./$< -d
-	# Analyze with hotspot (https://github.com/KDAB/hotspot) for example
-	hotspot perf.data
-	rm perf.data
-
-valgrind: $(STANDALONE_TARGET)
-	# --gen-suppressions=yes
-	# --leak-check=full
-	valgrind --suppressions=valgrind.supp ./$< -d
-
-clean:
-	rm -rfv build dist $(TARGET) $(STANDALONE_TARGET) *.a
-
-# Windows resources
-build/%.res: %.rc
-ifdef ARCH_WIN
-	windres $^ -O coff -o $@
-endif
-
-
-# Plugin helper
-plugins:
-ifdef CMD
-	for f in plugins/*; do (cd "$$f" && $(CMD)); done
+# Allow specifying the number of jobs for toolchain build for systems that need it.
+# Due to different build systems used in the toolchain build, just `make -j` won't work here.
+# Note: Plugin build uses `$(MAKE)` to inherit `-j` argument from command line.
+ifdef JOBS
+export JOBS := $(JOBS)
+# Define number of jobs for crosstool-ng (uses different argument format)
+export JOBS_CT_NG := .$(JOBS)
 else
-	for f in plugins/*; do $(MAKE) -C "$$f"; done
+# If `JOBS` is not specified, default to max number of jobs.
+export JOBS :=
+export JOBS_CT_NG :=
 endif
 
+WGET := wget --continue
+UNTAR := tar -x -f
+UNZIP := unzip
 
-# The following targets are not supported for public use
-
-DIST_NAME = Rack$(EDITION)-$(VERSION)-$(ARCH_NAME)
-ifdef ARCH_MAC
-	DIST_BUNDLE := VCV Rack $(VERSION_MAJOR) $(EDITION).app
-else
-	DIST_DIR := Rack$(VERSION_MAJOR)$(EDITION)
-endif
-DIST_MD := $(wildcard *.md)
-DIST_HTML := $(patsubst %.md, build/%.html, $(DIST_MD))
-DIST_RES := res cacert.pem Core.json template.vcv LICENSE-GPLv3.txt $(DIST_HTML)
-DIST_SDK_DIR := Rack-SDK
-DIST_SDK = Rack-SDK-$(VERSION)-$(ARCH_NAME).zip
+RACK_SDK_VERSION := 2.5.2
+DOCKER_IMAGE_VERSION := 15
 
 
-dist: $(TARGET) $(STANDALONE_TARGET) $(DIST_HTML)
-	mkdir -p dist
-ifdef ARCH_LIN
-	mkdir -p dist/"$(DIST_DIR)"
-	cp $(TARGET) dist/"$(DIST_DIR)"/
-	cp $(STANDALONE_TARGET) dist/"$(DIST_DIR)"/
-	$(STRIP) -s dist/"$(DIST_DIR)"/$(TARGET)
-	$(STRIP) -s dist/"$(DIST_DIR)"/$(STANDALONE_TARGET)
-	# Manually check that no nonstandard shared libraries are linked
-	ldd dist/"$(DIST_DIR)"/$(TARGET)
-	ldd dist/"$(DIST_DIR)"/$(STANDALONE_TARGET)
-	# Copy resources
-	cp -R $(DIST_RES) dist/"$(DIST_DIR)"/
-	cp plugins/Fundamental/dist/Fundamental-*.vcvplugin dist/"$(DIST_DIR)"/
-endif
-ifdef ARCH_MAC
-	mkdir -p dist/"$(DIST_BUNDLE)"
-	mkdir -p dist/"$(DIST_BUNDLE)"/Contents
-	mkdir -p dist/"$(DIST_BUNDLE)"/Contents/Resources
-	mkdir -p dist/"$(DIST_BUNDLE)"/Contents/MacOS
-	cp $(TARGET) dist/"$(DIST_BUNDLE)"/Contents/Resources/
-	cp $(STANDALONE_TARGET) dist/"$(DIST_BUNDLE)"/Contents/MacOS/
-	$(STRIP) -S dist/"$(DIST_BUNDLE)"/Contents/Resources/$(TARGET)
-	$(STRIP) -S dist/"$(DIST_BUNDLE)"/Contents/MacOS/$(STANDALONE_TARGET)
-	install_name_tool -change $(TARGET) @executable_path/../Resources/$(TARGET) dist/"$(DIST_BUNDLE)"/Contents/MacOS/$(STANDALONE_TARGET)
-	# Manually check that no nonstandard shared libraries are linked
-	otool -L dist/"$(DIST_BUNDLE)"/Contents/Resources/$(TARGET)
-	otool -L dist/"$(DIST_BUNDLE)"/Contents/MacOS/$(STANDALONE_TARGET)
-	# Copy resources
-	cp Info.plist dist/"$(DIST_BUNDLE)"/Contents/
-	$(SED) 's/{VERSION}/$(VERSION)/g' dist/"$(DIST_BUNDLE)"/Contents/Info.plist
-	cp -R icon.icns dist/"$(DIST_BUNDLE)"/Contents/Resources/
-	cp -R $(DIST_RES) dist/"$(DIST_BUNDLE)"/Contents/Resources/
-	cp plugins/Fundamental/dist/Fundamental-*.vcvplugin dist/"$(DIST_BUNDLE)"/Contents/Resources/
-endif
-ifdef ARCH_WIN
-	mkdir -p dist/"$(DIST_DIR)"
-	cp $(TARGET) dist/"$(DIST_DIR)"/
-	cp $(STANDALONE_TARGET) dist/"$(DIST_DIR)"/
-	$(STRIP) -s dist/"$(DIST_DIR)"/$(TARGET)
-	$(STRIP) -s dist/"$(DIST_DIR)"/$(STANDALONE_TARGET)
-	# Copy resources
-	cp -R $(DIST_RES) dist/"$(DIST_DIR)"/
-	cp /mingw64/bin/libwinpthread-1.dll dist/"$(DIST_DIR)"/
-	cp /mingw64/bin/libstdc++-6.dll dist/"$(DIST_DIR)"/
-	cp /mingw64/bin/libgcc_s_seh-1.dll dist/"$(DIST_DIR)"/
-	cp plugins/Fundamental/dist/Fundamental-*.vcvplugin dist/"$(DIST_DIR)"/
-endif
+all: toolchain-all rack-sdk-all
 
 
-sdk: $(DIST_HTML)
-	mkdir -p dist/$(DIST_SDK_DIR)
-	cp -R include *.mk helper.py $(DIST_HTML) dist/$(DIST_SDK_DIR)/
-	mkdir -p dist/$(DIST_SDK_DIR)/dep
-	cp -R dep/include dist/$(DIST_SDK_DIR)/dep/
-ifdef ARCH_LIN
-	cp $(TARGET) dist/$(DIST_SDK_DIR)/
-	$(STRIP) -s dist/$(DIST_SDK_DIR)/$(TARGET)
-endif
-ifdef ARCH_MAC
-	cp $(TARGET) dist/$(DIST_SDK_DIR)/
-	$(STRIP) -S dist/$(DIST_SDK_DIR)/$(TARGET)
-endif
-ifdef ARCH_WIN
-	cp $(TARGET).a dist/$(DIST_SDK_DIR)/
-endif
-	# SDK
-	cd dist && zip -q -9 -r $(DIST_SDK) $(DIST_SDK_DIR)
+# Toolchain build
 
 
-package:
-ifdef ARCH_LIN
-	# Make ZIP
-	cd dist && zip -q -9 -r $(DIST_NAME).zip "$(DIST_DIR)"
-endif
-ifdef ARCH_MAC
-	# Clean up and sign bundle
-	xattr -cr dist/"$(DIST_BUNDLE)"
-	codesign --verbose --sign "Developer ID Application: Andrew Belt (V8SW9J626X)" --options runtime --entitlements Entitlements.plist --timestamp --deep dist/"$(DIST_BUNDLE)"/Contents/Resources/$(TARGET) dist/"$(DIST_BUNDLE)"
-	codesign --verify --deep --strict --verbose=2 dist/"$(DIST_BUNDLE)"
-	# Make standalone PKG
-	mkdir -p dist/Component
-	cp -R dist/"$(DIST_BUNDLE)" dist/Component/
-	pkgbuild --identifier com.vcvrack.rack --component-plist Component.plist --root dist/Component --install-location /Applications dist/Component.pkg
-	# Make PKG
-	productbuild --distribution Distribution.xml --package-path dist dist/$(DIST_NAME).pkg
-	productsign --sign "Developer ID Installer: Andrew Belt (V8SW9J626X)" dist/$(DIST_NAME).pkg dist/$(DIST_NAME)-signed.pkg
-	mv dist/$(DIST_NAME)-signed.pkg dist/$(DIST_NAME).pkg
-endif
-ifdef ARCH_WIN
-	# Make NSIS installer
-	# pacman -S mingw-w64-x86_64-nsis
-	makensis -DVERSION_MAJOR=$(VERSION_MAJOR) -DVERSION=$(VERSION) "-XOutFile dist/$(DIST_NAME).exe" installer.nsi
-endif
+toolchain-all: toolchain-lin toolchain-win toolchain-mac cppcheck
 
 
-lipo:
-ifndef OTHER_RACK_DIR
-	$(error OTHER_RACK_DIR not defined)
-endif
-ifdef ARCH_MAC
-	# App bundle
-	lipo -create -output dist/"$(DIST_BUNDLE)"/Contents/Resources/$(TARGET) dist/"$(DIST_BUNDLE)"/Contents/Resources/$(TARGET) $(OTHER_RACK_DIR)/dist/"$(DIST_BUNDLE)"/Contents/Resources/$(TARGET)
-	lipo -create -output dist/"$(DIST_BUNDLE)"/Contents/MacOS/$(STANDALONE_TARGET) dist/"$(DIST_BUNDLE)"/Contents/MacOS/$(STANDALONE_TARGET) $(OTHER_RACK_DIR)/dist/"$(DIST_BUNDLE)"/Contents/MacOS/$(STANDALONE_TARGET)
-	# Fundamental package
-	cp $(OTHER_RACK_DIR)/dist/"$(DIST_BUNDLE)"/Contents/Resources/Fundamental-*.vcvplugin dist/"$(DIST_BUNDLE)"/Contents/Resources/
-endif
+crosstool-ng := $(LOCAL_DIR)/bin/ct-ng
+$(crosstool-ng):
+	git clone https://github.com/crosstool-ng/crosstool-ng.git
+	cd crosstool-ng && git checkout e63c40854c977f488bee159a8f8ebf5fc06c8666
+	cd crosstool-ng && ./bootstrap
+	cd crosstool-ng && ./configure --prefix="$(LOCAL_DIR)"
+	cd crosstool-ng && make -j $(JOBS)
+	cd crosstool-ng && make install -j $(JOBS)
+	rm -rf crosstool-ng
 
 
-notarize:
-ifdef ARCH_MAC
-	# Submit installer package to Apple
-	xcrun notarytool submit --keychain-profile "VCV" --wait dist/$(DIST_NAME).pkg
-	# Mark app as notarized
-	xcrun stapler staple dist/$(DIST_NAME).pkg
-	# Check notarization
-	stapler validate dist/$(DIST_NAME).pkg
-endif
+toolchain-lin := $(LOCAL_DIR)/x86_64-ubuntu16.04-linux-gnu
+toolchain-lin: $(toolchain-lin)
+$(toolchain-lin): $(crosstool-ng)
+	# Build a newer version of texinfo because lastest released version 7.1 has a bug
+	# that prevents building glibc for the GNU/Linux based toolchain.
+	git clone https://git.savannah.gnu.org/git/texinfo.git
+	cd texinfo && git checkout 60d3edc4b74b4e1e5ef55e53de394d3b65506c47
+	cd texinfo && ./autogen.sh
+	cd texinfo && ./configure --prefix="$(LOCAL_DIR)"
+	cd texinfo && make -j $(JOBS)
+	cd texinfo && make install -j $(JOBS)
+	rm -rf texinfo
+
+	ct-ng x86_64-ubuntu16.04-linux-gnu
+	CT_PREFIX="$(LOCAL_DIR)" ct-ng build$(JOBS_CT_NG)
+	rm -rf .build .config build.log
+	# HACK Copy GL and related include dirs to toolchain sysroot
+	chmod +w $(toolchain-lin)/x86_64-ubuntu16.04-linux-gnu/sysroot/usr/include
+	cp -r /usr/include/GL $(toolchain-lin)/x86_64-ubuntu16.04-linux-gnu/sysroot/usr/include/
+	cp -r /usr/include/KHR $(toolchain-lin)/x86_64-ubuntu16.04-linux-gnu/sysroot/usr/include/
+	cp -r /usr/include/X11 $(toolchain-lin)/x86_64-ubuntu16.04-linux-gnu/sysroot/usr/include/
+	chmod -w $(toolchain-lin)/x86_64-ubuntu16.04-linux-gnu/sysroot/usr/include
 
 
-install: uninstall
-ifdef ARCH_MAC
-	sudo installer -pkg dist/$(DIST_NAME).pkg -target /
-endif
+toolchain-win := $(LOCAL_DIR)/x86_64-w64-mingw32
+toolchain-win: $(toolchain-win)
+$(toolchain-win): $(crosstool-ng)
+	ct-ng x86_64-w64-mingw32
+	CT_PREFIX="$(LOCAL_DIR)" ct-ng build$(JOBS_CT_NG)
+	rm -rf .build .config build.log
 
 
-uninstall:
-ifdef ARCH_MAC
-	sudo rm -rf /Applications/"$(DIST_BUNDLE)"
-endif
+OSXCROSS_CLANG_VERSION := 15.0.7
+OSXCROSS_BINUTILS_VERSION := 2.37
+
+toolchain-mac := $(LOCAL_DIR)/osxcross
+toolchain-mac: $(toolchain-mac)
+$(toolchain-mac): export PATH := $(LOCAL_DIR)/osxcross/bin:$(PATH)
+$(toolchain-mac):
+	# Obtain osxcross sources.
+	git clone "https://github.com/tpoechtrager/osxcross.git" osxcross
+	cd osxcross && git checkout b8e6ccbaecd977edf6bb009f08c5c0b3ef72f805
+
+	# Build a custom clang compiler using the system's gcc compiler.
+	# This enables us to have custom compiler environment needed for cross-compilation.
+	cd osxcross && UNATTENDED=1 INSTALLPREFIX="$(LOCAL_DIR)" GITPROJECT=llvm CLANG_VERSION=$(OSXCROSS_CLANG_VERSION) OCDEBUG=1 ENABLE_CLANG_INSTALL=1 JOBS=$(JOBS) ./build_clang.sh
+
+	## Build osxcross.
+	cp MacOSX11.1.sdk.tar.* osxcross/tarballs/
+	cd osxcross && PATH="$(LOCAL_DIR)/bin:$(PATH)" UNATTENDED=1 TARGET_DIR="$(LOCAL_DIR)/osxcross" JOBS=$(JOBS) ./build.sh
+
+	## Build compiler-rt.
+	cd osxcross && ENABLE_COMPILER_RT_INSTALL=1 JOBS=$(JOBS) ./build_compiler_rt.sh
+
+	## Build MacOS binutils and build LLVM gold.
+	cd osxcross && BINUTILS_VERSION=$(OSXCROSS_BINUTILS_VERSION) TARGET_DIR="$(LOCAL_DIR)/osxcross" JOBS=$(JOBS) ./build_binutils.sh
+	cd osxcross/build/clang-$(OSXCROSS_CLANG_VERSION)/build_stage2 && cmake . -DLLVM_BINUTILS_INCDIR=$(PWD)/osxcross/build/binutils-$(OSXCROSS_BINUTILS_VERSION)/include && make install -j $(JOBS)
+
+	# Fix library paths (for Arch Linux and Ubuntu arm64).
+	export PLATFORM_ID=$$($(LOCAL_DIR)/bin/clang -dumpmachine) ; \
+	echo "Platform ID: $$PLATFORM_ID" ; \
+	if [ ! -z "$$PLATFORM_ID" ] && [ -e "$(LOCAL_DIR)/lib/$$PLATFORM_ID/"  ]; then \
+		echo "Copying lib files..." ; \
+		cp -Pv $(LOCAL_DIR)/lib/$$PLATFORM_ID/* $(LOCAL_DIR)/lib/ ; \
+		echo "done" ; \
+	fi
+
+	## Download rcodesign binary to ad-hoc sign arm64 plugin builds in a cross-compilation environment.
+	$(WGET) "https://github.com/indygreg/apple-platform-rs/releases/download/apple-codesign%2F0.22.0/apple-codesign-0.22.0-x86_64-unknown-linux-musl.tar.gz"
+	$(UNTAR) apple-codesign-0.22.0-x86_64-unknown-linux-musl.tar.gz
+	rm apple-codesign-0.22.0-x86_64-unknown-linux-musl.tar.gz
+	cp ./apple-codesign-0.22.0-x86_64-unknown-linux-musl/rcodesign $(LOCAL_DIR)/osxcross/bin/
+	rm -r apple-codesign-0.22.0-x86_64-unknown-linux-musl
+
+	rm -rf osxcross
 
 
-cleandist:
-	rm -rfv dist
+CPPCHECK_VERSION := 2.14.0
+cppcheck := $(LOCAL_DIR)/cppcheck/bin/cppcheck
+cppcheck: $(cppcheck)
+$(cppcheck):
+	$(WGET) "https://github.com/danmar/cppcheck/archive/refs/tags/$(CPPCHECK_VERSION).tar.gz"
+	$(UNTAR) $(CPPCHECK_VERSION).tar.gz
+	cd cppcheck-$(CPPCHECK_VERSION) && mkdir build
+	cd cppcheck-$(CPPCHECK_VERSION)/build \
+		&& cmake .. \
+		-DUSE_MATCHCOMPILER=On \
+		-DUSE_THREADS=On \
+		-DCMAKE_INSTALL_PREFIX=$(LOCAL_DIR)/cppcheck \
+		&& cmake --build . -j \
+		&& cmake --install .
+	rm $(CPPCHECK_VERSION).tar.gz
+	rm -rf cppcheck-$(CPPCHECK_VERSION)
 
 
-.DEFAULT_GOAL := all
-.PHONY: all dep run debug clean plugins dist sdk package lipo notarize
+toolchain-clean:
+	rm -rf local osxcross .build build.log .config
+
+
+# Rack SDK
+
+
+rack-sdk-all: rack-sdk-mac-x64 rack-sdk-mac-arm64 rack-sdk-win-x64 rack-sdk-lin-x64
+
+
+rack-sdk-mac-x64 := Rack-SDK-mac-x64
+rack-sdk-mac-x64: $(rack-sdk-mac-x64)
+$(rack-sdk-mac-x64):
+	$(WGET) "https://vcvrack.com/downloads/Rack-SDK-$(RACK_SDK_VERSION)-mac-x64+arm64.zip"
+	$(UNZIP) Rack-SDK-$(RACK_SDK_VERSION)-mac-x64+arm64.zip
+	mv Rack-SDK Rack-SDK-mac-x64
+	rm Rack-SDK-$(RACK_SDK_VERSION)-mac-x64+arm64.zip
+RACK_DIR_MAC_X64 := $(PWD)/$(rack-sdk-mac-x64)
+
+
+rack-sdk-mac-arm64 := Rack-SDK-mac-arm64
+rack-sdk-mac-arm64: $(rack-sdk-mac-arm64)
+$(rack-sdk-mac-arm64):
+	$(WGET) "https://vcvrack.com/downloads/Rack-SDK-$(RACK_SDK_VERSION)-mac-x64+arm64.zip"
+	$(UNZIP) Rack-SDK-$(RACK_SDK_VERSION)-mac-x64+arm64.zip
+	mv Rack-SDK Rack-SDK-mac-arm64
+	rm Rack-SDK-$(RACK_SDK_VERSION)-mac-x64+arm64.zip
+RACK_DIR_MAC_ARM64 := $(PWD)/$(rack-sdk-mac-arm64)
+
+
+rack-sdk-win-x64 := Rack-SDK-win-x64
+rack-sdk-win-x64: $(rack-sdk-win-x64)
+$(rack-sdk-win-x64):
+	$(WGET) "https://vcvrack.com/downloads/Rack-SDK-$(RACK_SDK_VERSION)-win-x64.zip"
+	$(UNZIP) Rack-SDK-$(RACK_SDK_VERSION)-win-x64.zip
+	mv Rack-SDK Rack-SDK-win-x64
+	rm Rack-SDK-$(RACK_SDK_VERSION)-win-x64.zip
+RACK_DIR_WIN_X64 := $(PWD)/$(rack-sdk-win-x64)
+
+
+rack-sdk-lin-x64 := Rack-SDK-lin-x64
+rack-sdk-lin-x64: $(rack-sdk-lin-x64)
+$(rack-sdk-lin-x64):
+	$(WGET) "https://vcvrack.com/downloads/Rack-SDK-$(RACK_SDK_VERSION)-lin-x64.zip"
+	$(UNZIP) Rack-SDK-$(RACK_SDK_VERSION)-lin-x64.zip
+	mv Rack-SDK Rack-SDK-lin-x64
+	rm Rack-SDK-$(RACK_SDK_VERSION)-lin-x64.zip
+RACK_DIR_LIN_X64 := $(PWD)/$(rack-sdk-lin-x64)
+
+
+rack-sdk-clean:
+	rm -rf $(rack-sdk-mac-x64) $(rack-sdk-mac-arm64) $(rack-sdk-win-x64) $(rack-sdk-lin-x64)
+
+
+# Plugin build
+
+
+PLUGIN_BUILD_DIR := plugin-build
+PLUGIN_DIR ?=
+
+
+plugin-build:
+	$(MAKE) plugin-build-mac-x64
+	$(MAKE) plugin-build-mac-arm64
+	$(MAKE) plugin-build-win-x64
+	$(MAKE) plugin-build-lin-x64
+
+
+plugin-build-mac-x64: export PATH := $(LOCAL_DIR)/osxcross/bin:$(PATH)
+plugin-build-mac-x64: export CC := x86_64-apple-darwin20.2-clang
+plugin-build-mac-x64: export CXX := x86_64-apple-darwin20.2-clang++-libc++
+plugin-build-mac-x64: export STRIP := x86_64-apple-darwin20.2-strip
+plugin-build-mac-x64: export INSTALL_NAME_TOOL := x86_64-apple-darwin20.2-install_name_tool
+plugin-build-mac-x64: export OTOOL := x86_64-apple-darwin20.2-otool
+plugin-build-mac-x64: export CODESIGN := rcodesign sign
+
+
+plugin-build-mac-arm64: export PATH := $(LOCAL_DIR)/osxcross/bin:$(PATH)
+plugin-build-mac-arm64: export CC := arm64-apple-darwin20.2-clang
+plugin-build-mac-arm64: export CXX := arm64-apple-darwin20.2-clang++-libc++
+plugin-build-mac-arm64: export STRIP := arm64-apple-darwin20.2-strip
+plugin-build-mac-arm64: export INSTALL_NAME_TOOL := arm64-apple-darwin20.2-install_name_tool
+plugin-build-mac-arm64: export OTOOL := arm64-apple-darwin20.2-otool
+plugin-build-mac-arm64: export CODESIGN := rcodesign sign
+
+
+plugin-build-win-x64: export PATH := $(LOCAL_DIR)/x86_64-w64-mingw32/bin:$(PATH)
+plugin-build-win-x64: export CC := x86_64-w64-mingw32-gcc
+plugin-build-win-x64: export CXX := x86_64-w64-mingw32-g++
+plugin-build-win-x64: export STRIP := x86_64-w64-mingw32-strip
+plugin-build-win-x64: export OBJCOPY := x86_64-w64-mingw32-objcopy
+
+
+plugin-build-lin-x64: export PATH:=$(LOCAL_DIR)/x86_64-ubuntu16.04-linux-gnu/bin:$(PATH)
+plugin-build-lin-x64: export CC := x86_64-ubuntu16.04-linux-gnu-gcc
+plugin-build-lin-x64: export CXX := x86_64-ubuntu16.04-linux-gnu-g++
+plugin-build-lin-x64: export STRIP := x86_64-ubuntu16.04-linux-gnu-strip
+plugin-build-lin-x64: export OBJCOPY := x86_64-ubuntu16.04-linux-gnu-objcopy
+
+
+plugin-build-mac-x64: export RACK_DIR := $(RACK_DIR_MAC_X64)
+plugin-build-mac-arm64: export RACK_DIR := $(RACK_DIR_MAC_ARM64)
+plugin-build-win-x64: export RACK_DIR := $(RACK_DIR_WIN_X64)
+plugin-build-lin-x64: export RACK_DIR := $(RACK_DIR_LIN_X64)
+
+
+plugin-build-mac-x64 plugin-build-mac-arm64 plugin-build-win-x64 plugin-build-lin-x64:
+	cd $(PLUGIN_DIR) && $(MAKE) clean
+	cd $(PLUGIN_DIR) && $(MAKE) cleandep
+	cd $(PLUGIN_DIR) && $(MAKE) dep
+	cd $(PLUGIN_DIR) && $(MAKE) dist
+	mkdir -p $(PLUGIN_BUILD_DIR)
+	cp $(PLUGIN_DIR)/dist/*.vcvplugin $(PLUGIN_BUILD_DIR)/
+	cd $(PLUGIN_DIR) && $(MAKE) clean
+
+
+plugin-build-clean:
+	rm -rf $(PLUGIN_BUILD_DIR)
+
+
+# Static Analysis
+
+static-analysis-cppcheck: export PATH := $(LOCAL_DIR)/cppcheck/bin:$(PATH)
+static-analysis-cppcheck: cppcheck
+	cd $(PLUGIN_DIR) && cppcheck src/ -isrc/dep --std=c++11 -j $(shell nproc) --error-exitcode=1
+
+
+plugin-analyze: static-analysis-cppcheck
+
+
+# Docker helpers
+
+
+dep-ubuntu:
+	apt-get update
+	apt-get install -y --no-install-recommends \
+		ca-certificates \
+		git \
+		build-essential \
+		autoconf \
+		automake \
+		bison \
+		flex \
+		gawk \
+		libtool-bin \
+		libncurses5-dev \
+		unzip \
+		zip \
+		jq \
+		libgl-dev \
+		libglu-dev \
+		git \
+		wget \
+		curl \
+		cmake \
+		nasm \
+		xz-utils \
+		file \
+		python3 \
+		libxml2-dev \
+		libssl-dev \
+		texinfo \
+		help2man \
+		libz-dev \
+		rsync \
+		xxd \
+		perl \
+		coreutils \
+		zstd \
+		markdown \
+		libarchive-tools \
+		gettext
+
+
+dep-arch-linux:
+	pacman -Suyy --noconfirm && pacman -S --noconfirm --needed \
+		gcc \
+		git \
+		cmake \
+		patch \
+		python3 \
+		automake \
+		help2man \
+		texinfo \
+		libtool \
+		jq \
+		rsync \
+		autoconf \
+		flex \
+		bison \
+		which \
+		unzip \
+		wget \
+		glu \
+		libx11 \
+		mesa
+
+
+
+docker-build: rack-sdk-all
+	docker build --build-arg JOBS=$(JOBS) --no-cache --tag rack-plugin-toolchain:$(DOCKER_IMAGE_VERSION) . --progress=plain 2>&1 | tee docker-build.log
+
+
+DOCKER_RUN := docker run --rm --interactive --tty \
+	--volume=$(PLUGIN_DIR):/home/build/plugin-src \
+	--volume=$(PWD)/$(PLUGIN_BUILD_DIR):/home/build/rack-plugin-toolchain/$(PLUGIN_BUILD_DIR) \
+	--volume=$(PWD)/Rack-SDK-mac-x64:/home/build/rack-plugin-toolchain/Rack-SDK-mac-x64 \
+	--volume=$(PWD)/Rack-SDK-mac-arm64:/home/build/rack-plugin-toolchain/Rack-SDK-mac-arm64 \
+	--volume=$(PWD)/Rack-SDK-win-x64:/home/build/rack-plugin-toolchain/Rack-SDK-win-x64 \
+	--volume=$(PWD)/Rack-SDK-lin-x64:/home/build/rack-plugin-toolchain/Rack-SDK-lin-x64 \
+	--env PLUGIN_DIR=/home/build/plugin-src \
+	rack-plugin-toolchain:$(DOCKER_IMAGE_VERSION) \
+	/bin/bash
+
+docker-run:
+	$(DOCKER_RUN)
+
+docker-plugin-build:
+	mkdir -p $(PLUGIN_BUILD_DIR)
+	$(DOCKER_RUN) -c "$(MAKE) plugin-build $(MFLAGS)"
+
+docker-plugin-build-mac-x64:
+	mkdir -p $(PLUGIN_BUILD_DIR)
+	$(DOCKER_RUN) -c "$(MAKE) plugin-build-mac-x64 $(MFLAGS)"
+
+docker-plugin-build-mac-arm64:
+	mkdir -p $(PLUGIN_BUILD_DIR)
+	$(DOCKER_RUN) -c "$(MAKE) plugin-build-mac-arm64 $(MFLAGS)"
+
+docker-plugin-build-win-x64:
+	mkdir -p $(PLUGIN_BUILD_DIR)
+	$(DOCKER_RUN) -c "$(MAKE) plugin-build-win-x64 $(MFLAGS)"
+
+docker-plugin-build-lin-x64:
+	mkdir -p $(PLUGIN_BUILD_DIR)
+	$(DOCKER_RUN) -c "$(MAKE) plugin-build-lin-x64 $(MFLAGS)"
+
+docker-plugin-analyze:
+	$(DOCKER_RUN) -c "$(MAKE) plugin-analyze $(MFLAGS)"
+
+
+.NOTPARALLEL:
+.PHONY: all plugin-build plugin-analyze

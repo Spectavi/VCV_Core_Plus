@@ -1,3 +1,19 @@
+# Plugin Files
+
+Available for Windows and Linux in the plugin-builds/ folder.
+
+# Building Core Plus Plugin 
+
+```bash
+unset LD_LIBRARY_PATH
+sudo make dep-ubuntu
+make toolchain-lin
+make toolchain-win
+make rack-sdk-all
+make plugin-build-win-x64 PLUGIN_DIR=CorePlus/
+make plugin-build-lin-x64 PLUGIN_DIR=CorePlus/
+```
+
 # VCV Rack Plugin Toolchain
 
 **Cross-compile** VCV Rack plugins for all supported platforms with a single command on any GNU/Linux-based distribution.

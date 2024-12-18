@@ -6,7 +6,11 @@ using namespace rack;
 // Declare the Plugin, defined in plugin.cpp
 extern Plugin* pluginInstance;
 
+// CC -> CV
 extern Model* modelMIDICCCV64;
+
+// CV -> CC
+extern Model* modelMIDICVCC64;
 
 
 template <class TChoice>
@@ -32,7 +36,7 @@ struct Grid64MidiDisplay : MidiDisplay {
 			for (int x = 0; x < 16; x++) {
 				choices[x][y] = new TChoice;
 				choices[x][y]->box.pos = pos;
-				choices[x][y]->setId(4 * y + x);
+				choices[x][y]->setId(16 * y + x);
 				choices[x][y]->box.size.x = box.size.x / 16;
 				choices[x][y]->box.pos.x = box.size.x / 16 * x;
 				choices[x][y]->setModule(module);

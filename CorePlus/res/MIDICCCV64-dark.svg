@@ -5,13 +5,25 @@
    viewBox="0 0 570 380"
    version="1.1"
    id="svg72"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
-  <defs id="defs7">
-    <linearGradient id="uuid-925fcaa7-b9ea-42b9-97ca-be2178393fa0" x1="100" y1="0" x2="100" y2="380" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#2a2a2b"/>
-      <stop offset="1" stop-color="#171717"/>
+  <defs
+     id="defs7">
+    <linearGradient
+       id="uuid-925fcaa7-b9ea-42b9-97ca-be2178393fa0"
+       x1="100"
+       y1="0"
+       x2="100"
+       y2="380"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#2a2a2b"
+         id="stop2" />
+      <stop
+         offset="1"
+         stop-color="#171717"
+         id="stop4" />
     </linearGradient>
   </defs>
   <g
@@ -102,7 +114,7 @@
        id="rect20-7"
        style="fill:#cccccc" />
     <rect
-       x="80.143494"
+       x="80.407753"
        y="319.27237"
        width="28.631599"
        height="28.633011"
@@ -142,7 +154,7 @@
        id="rect28-6"
        style="fill:#cccccc" />
     <rect
-       x="80.143494"
+       x="80.407753"
        y="285.27655"
        width="28.631599"
        height="28.633011"
@@ -182,7 +194,7 @@
        id="rect36-2"
        style="fill:#cccccc" />
     <rect
-       x="80.143494"
+       x="80.407753"
        y="251.28075"
        width="28.631599"
        height="28.633011"
@@ -222,7 +234,7 @@
        id="rect44-3"
        style="fill:#cccccc" />
     <rect
-       x="80.143494"
+       x="80.407753"
        y="217.28494"
        width="28.631599"
        height="28.633011"
@@ -257,7 +269,7 @@
        id="rect76-2"
        style="fill:#cccccc" />
     <rect
-       x="45.903355"
+       x="46.16761"
        y="319.27237"
        width="28.631599"
        height="28.633011"
@@ -277,7 +289,7 @@
        id="rect84-8"
        style="fill:#cccccc" />
     <rect
-       x="45.903355"
+       x="46.16761"
        y="285.27655"
        width="28.631599"
        height="28.633011"
@@ -297,7 +309,7 @@
        id="rect92-92"
        style="fill:#cccccc" />
     <rect
-       x="45.903355"
+       x="46.16761"
        y="251.28075"
        width="28.631599"
        height="28.633011"
@@ -317,7 +329,7 @@
        id="rect100-2"
        style="fill:#cccccc" />
     <rect
-       x="45.903355"
+       x="46.16761"
        y="217.28494"
        width="28.631599"
        height="28.633011"
@@ -821,4 +833,16 @@
        style="font-weight:bold;font-family:FreeMono;-inkscape-font-specification:'FreeMono Bold';fill:#cccccc"
        id="path912-8" />
   </g>
+  <path
+     style="fill:none;stroke:#cdcdcd;stroke-width:1.02891px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 146.74267,213.834 V 352.11449"
+     id="path951" />
+  <path
+     style="fill:none;stroke:#cdcdcd;stroke-width:1.02891px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 286.54514,213.834 V 352.11449"
+     id="path951-3" />
+  <path
+     style="fill:none;stroke:#cdcdcd;stroke-width:1.02891px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 427.25483,213.83431 V 352.1148"
+     id="path951-3-6" />
 </svg>

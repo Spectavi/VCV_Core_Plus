@@ -228,17 +228,11 @@ struct MIDICC_CV_64Widget : ModuleWidget {
 		setPanel(createPanel(asset::plugin(pluginInstance, "res/MIDICCCV64.svg"), 
 			asset::plugin(pluginInstance, "res/MIDICCCV64-dark.svg")));
 		
-
 		addChild(createWidget<ThemedScrew>(Vec(RACK_GRID_WIDTH, 0)));
 		addChild(createWidget<ThemedScrew>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, 0)));
 		addChild(createWidget<ThemedScrew>(Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 		addChild(createWidget<ThemedScrew>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
-		//float row1_y = 78.431;
-		//float row2_y = 89.946;
-		//float row3_y = 101.466;
-		//float row4_y = 112.998;
-		
 		float space_x = 11.8598;
 		float first_x = 8.189;
 		

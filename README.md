@@ -2,6 +2,12 @@
 
 Available for Windows and Linux in the plugin-build/ folder.
 
+Current modules:
+- MIDI CC -> CV x64
+- CV -> MIDI CC x64
+
+![current modules screenshot](current_modules.png)
+
 # Building Core Plus Plugin 
 
 ```bash

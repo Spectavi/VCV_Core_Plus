@@ -24,16 +24,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f821c9f-745e-496b-b343-cb52f2d99a78" name="Changes" comment="Initial commit.">
-      <change afterPath="$PROJECT_DIR$/CorePlus/res/MIDICVCC64-dark.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CorePlus/res/MIDICVCC64.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CorePlus/src/MIDICVCC64.cpp" afterDir="false" />
+    <list default="true" id="7f821c9f-745e-496b-b343-cb52f2d99a78" name="Changes" comment="Add CV -&gt; CC.&#10;Fix bug in Grid64MidiDisplay.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CorePlus/plugin.json" beforeDir="false" afterPath="$PROJECT_DIR$/CorePlus/plugin.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CorePlus/res/MIDICCCV64.svg" beforeDir="false" afterPath="$PROJECT_DIR$/CorePlus/res/MIDICCCV64.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CorePlus/src/MIDICCCV64.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/CorePlus/src/MIDICCCV64.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CorePlus/src/plugin.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/CorePlus/src/plugin.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CorePlus/src/plugin.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/CorePlus/src/plugin.hpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +151,7 @@
       <workItem from="1734296081244" duration="35000" />
       <workItem from="1734472141228" duration="2114000" />
       <workItem from="1734474300322" duration="3812000" />
-      <workItem from="1734498610958" duration="4799000" />
+      <workItem from="1734498610958" duration="6073000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit.">
       <option name="closed" value="true" />
@@ -177,7 +169,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734498727341</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Add CV -&gt; CC.&#10;Fix bug in Grid64MidiDisplay.">
+      <option name="closed" value="true" />
+      <created>1734507381440</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1734507381440</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,6 +208,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit." />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit." />
+    <MESSAGE value="Add CV -&gt; CC.&#10;Fix bug in Grid64MidiDisplay." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add CV -&gt; CC.&#10;Fix bug in Grid64MidiDisplay." />
   </component>
 </project>
